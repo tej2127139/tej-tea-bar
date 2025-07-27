@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order - Tej Tea Bar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Open+Sans&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #fbe4c9, #fef1df);
+            font-family: 'Open Sans', sans-serif;
+            text-align: center;
+            padding: 30px;
+            color: #4b2e1e;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .order-box {
+            background: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            width: 350px;
+            margin: 0 auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+
+        img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        h2,
+        p {
+            margin: 10px 0;
+        }
+
+        input[type="number"] {
+            width: 60px;
+            padding: 5px;
+            font-size: 16px;
+            margin: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin: 10px 8px;
+            padding: 10px 18px;
+            border: none;
+            background-color: #a06a42;
+            color: white;
+            font-size: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #8b5e3c;
+        }
+
+        #cartDisplay {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Online Snacks</h1>
+
+    <div class="order-box">
+        <img id="itemImage" src="" alt="Food Image" />
+        <h2 id="itemName">Loading item...</h2>
+        <p id="itemPrice"></p>
+
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" value="1" min="1" onchange="updateTotal()" />
+
+        <p id="totalAmount"></p>
+
+        <button onclick="addToCart()">Add to Cart</button>
+        <button onclick="makePayment()">Pay Now</button>
+
+        <div id="cartDisplay"></div>
+    </div>
+
+    <script>
+        const selectedItem = JSON.parse(localStorage.getItem("selectedItem"));
+
+        const nameEl = document.getElementById("itemName");
+        const priceEl = document.getElementById("itemPrice");
+        const imageEl = document.getElementById("itemImage");
+        const totalEl = document.getElementById("totalAmount");
+
+        if (selectedItem && selectedItem.name && selectedItem.price && selectedItem.image) {
+            nameEl.textContent = selectedItem.name;
+            priceEl.textContent = `Price: ₹${selectedItem.price}`;
+            imageEl.src = selectedItem.image;
+            imageEl.style.display = "block";
+            updateTotal();
+        } else {
+            nameEl.textContent = "Item not found";
+            priceEl.textContent = "";
+            imageEl.style.display = "none";
+        }
+
+        function updateTotal() {
+            const qty = parseInt(document.getElementById("quantity").value) || 1;
+            const total = qty * selectedItem.price;
+            totalEl.textContent = `Total: ₹${total}`;
+        }
+
+        function addToCart() {
+            const qty = parseInt(document.getElementById("quantity").value) || 1;
+            const total = qty * selectedItem.price;
+            document.getElementById("cartDisplay").textContent =
+                `${qty} x ${selectedItem.name} added to cart. Total: ₹${total}`;
+        }
+
+        function makePayment() {
+            const qty = parseInt(document.getElementById("quantity").value) || 1;
+            const total = qty * selectedItem.price;
+            alert(`Total Amount: ₹${total}\nPayment successful! ✅`);
+        }
+
+        function addToCart() {
+            const qty = parseInt(document.getElementById("quantity").value) || 1;
+            const total = qty * selectedItem.price;
+
+            // Get existing cart or create empty array
+            const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+            // Add new item
+            cart.push({
+                name: selectedItem.name,
+                price: selectedItem.price,
+                image: selectedItem.image,
+                quantity: qty,
+                total: total
+            });
+
+            localStorage.setItem("cartItems", JSON.stringify(cart));
+            document.getElementById("cartDisplay").textContent =
+                `${qty} x ${selectedItem.name} added to cart. Total: ₹${total}`;
+        }
+
+    </script>
+
+</body>
+
+</html>

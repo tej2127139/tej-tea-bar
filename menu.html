@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu - Tej Tea Bar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background-color: #fdf7f0;
+      color: #4b2e1e;
+      overflow-x: hidden;
+    }
+
+    .menu-header {
+      background-color: #c1a57b;
+      text-align: center;
+      padding: 30px 20px 10px;
+    }
+
+    .brand-title {
+      font-family: 'Pacifico', cursive;
+      font-size: 42px;
+      color: #4b2e1e;
+      margin: 0;
+    }
+
+    .brand-subtitle {
+      font-size: 18px;
+      color: #5e3e2c;
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    .menu-section {
+      padding: 30px 20px;
+      background-color: #fff8ea;
+      border: 2px solid #d8c1a0;
+      margin: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .menu-title {
+      font-size: 28px;
+      font-family: 'Pacifico', cursive;
+      text-align: center;
+      color: #5a3311;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .snack-grid {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 16px;
+      padding: 10px 0;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .snack-grid::-webkit-scrollbar {
+      display: none;
+    }
+
+    .menu-card {
+      min-width: 200px;
+      scroll-snap-align: start;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      text-align: center;
+      padding: 12px;
+      transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .menu-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .menu-card h3 {
+      margin: 0 0 5px;
+      color: #4b2e1e;
+      font-size: 17px;
+    }
+
+    .menu-card p {
+      margin: 0;
+      font-size: 14px;
+      color: #7a4b26;
+    }
+
+    .menu-card .btn {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 8px 16px;
+      font-size: 14px;
+      background-color: #8b5e3c;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .menu-card .btn:hover {
+      background-color: #a06a42;
+    }
+
+    .back-btn-wrapper {
+      text-align: center;
+      margin: 30px 0 0;
+    }
+
+    .back-btn {
+      padding: 12px 24px;
+      background-color: #a06a42;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 10px;
+      font-size: 16px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .back-btn:hover {
+      background-color: #8b5e3c;
+      transform: translateY(-2px);
+      box-shadow: 0 0 12px #c7a57d;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #e6d3b3;
+      font-size: 15px;
+    }
+
+    footer a {
+      color: #4b2e1e;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .brand-title {
+        font-size: 32px;
+      }
+
+      .brand-subtitle {
+        font-size: 16px;
+      }
+
+      .menu-card {
+        min-width: 160px;
+      }
+
+      .menu-card img {
+        height: 130px;
+      }
+
+      .menu-title {
+        font-size: 22px;
+      }
+
+      .menu-section {
+        margin: 30px 15px;
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .menu-card h3 {
+        font-size: 15px;
+      }
+
+      .menu-card p {
+        font-size: 13px;
+      }
+
+      .back-btn {
+        font-size: 14px;
+        padding: 10px 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="menu-header">
+    <h1 class="brand-title">Tej Tea Bar</h1>
+    <p class="brand-subtitle">Served with Love and Purpose</p>
+  </div>
+
+  <section class="menu-section">
+    <h2 class="menu-title">Pizza Mania</h2>
+    <div class="snack-grid">
+      <div class="menu-card">
+        <img src="images/cheese pizza.webp" alt="Cheesa Pizza">
+        <h3>Cheese Pizza</h3>
+        <p>₹89</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/italian.webp" alt="Italian pizza">
+        <h3>Italian Pizza</h3>
+        <p>₹99</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/tandoori paneer.webp" alt="Tandoori Paneer Pizza">
+        <h3>Tandoori Paneer Pizza</h3>
+        <p>₹95</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/margharita.jpeg" alt="Margherita pizza">
+        <h3>Margherita Pizza</h3>
+        <p>₹99</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/farm.jpeg" alt="Farm fresh pizza">
+        <h3>Farm Fresh Pizza</h3>
+        <p>₹99</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/cheese lover.jpeg" alt="Cheese Lover Pizza">
+        <h3>Cheese Lover Pizza</h3>
+        <p>₹99</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/jain.jpeg" alt="Jain Swaminarayan Pizza">
+        <h3>Jain Swaminarayan Pizza</h3>
+        <p>₹99</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-section">
+    <h2 class="menu-title">Bites and Munchies</h2>
+    <div class="snack-grid">
+      <div class="menu-card">
+        <img src="images/chilly toast.jpeg" alt="Cheese chilly toast">
+        <h3>Cheese Chilly Toast</h3>
+        <p>₹70</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/garlic bread.jpeg" alt="Cheese Garlic bread">
+        <h3>Cheese Garlic Bread</h3>
+        <p>₹60</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/garlic bread sticks.jpeg" alt="Garlic Bread Sticks">
+        <h3>Garlic Bread Sticks</h3>
+        <p>₹75</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/spring roll.jpeg" alt="Spring roll">
+        <h3>Spring Roll</h3>
+        <p>₹75</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/pizza pocket.jpeg" alt="Pizza Pocket">
+        <h3>Pizza Pocket</h3>
+        <p>₹75</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/veg momo.jpeg" alt="Veg Momos">
+        <h3>Veg Momos</h3>
+        <p>₹75</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/veg burger.jpeg" alt="Veg Burger">
+        <h3>Veg Burger</h3>
+        <p>₹75</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/veg cheese burger.jpeg" alt="Cheese Burger">
+        <h3>Cheese Burger</h3>
+        <p>₹75</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-section">
+    <h2 class="menu-title">Frylicious</h2>
+    <div class="snack-grid">
+      <div class="menu-card">
+        <img src="images/Crispy.jpeg" alt="Classic Crispy Fries">
+        <h3>Classic Crispy Fries</h3>
+        <p>₹60</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/peri peri.jpeg" alt="Peri Peri French Fries">
+        <h3>Peri Peri french fries</h3>
+        <p>₹55</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/cheese loaded.jpeg" alt="Cheesy Loaded Fries">
+        <h3>Cheesy Loaded Fries</h3>
+        <p>₹65</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-section">
+    <h2 class="menu-title">Power Combos</h2>
+    <div class="snack-grid">
+      <div class="menu-card">
+        <img src="images/combo 1.jpeg" alt="Pizza + French fries + coke">
+        <h3>Pizza + French Fries + coke</h3>
+        <p>₹110</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/combo 2.jpeg" alt="Pizza + coke">
+        <h3>Pizza + Coke</h3>
+        <p>₹95</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/combo 3.jpeg" alt="Pizza + Garlic Bread + Coke">
+        <h3>Pizza + Garlic Bread + Coke</h3>
+        <p>₹80</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/combo 5.jpeg" alt="Meal for two">
+        <h3>Meal for two</h3>
+        <p>₹80</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/combo 4.jpeg" alt="Large Pizza + Garlic Bread + Coke">
+        <h3>Pizza + Garlic Bread + Coke</h3>
+        <p>₹80</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-section">
+    <h2 class="menu-title">Desi Carvings</h2>
+    <div class="snack-grid">
+      <div class="menu-card">
+        <img src="images/Aloo.jpeg" alt="Aloo Paratha">
+        <h3>Aloo Paratha</h3>
+        <p>₹40</p>
+        <p>with butter ₹70</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/paneer paratha.jpeg" alt="Paneer Paratha">
+        <h3>Paneer Paratha</h3>
+        <p>₹60</p>
+        <p>with butter ₹80</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/thepla.jpeg" alt="Thepla">
+        <h3>Thepla-4pcs</h3>
+        <p>₹15</p>
+        <p>with butter ₹70</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/poha.jpeg" alt="Poha">
+        <h3>Poha</h3>
+        <p>₹15</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/Dabada.jpeg" alt="Dabada">
+        <h3>Dabada</h3>
+        <p>₹15</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/Dal vad.jpeg" alt="Dal vada">
+        <h3>Dal Vada</h3>
+        <p>₹15</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/Methi.jpeg" alt="Methi vada">
+        <h3>Methi Vada</h3>
+        <p>₹15</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/samosa.jpeg" alt="Samosa">
+        <h3>Samosa</h3>
+        <p>₹15</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/bun maska.jpeg" alt="Bun Maska">
+        <h3>Bun Maska</h3>
+        <p>₹15</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/Pineapple.jpeg" alt="Pineapple Maska">
+        <h3>Pineapple Maska bun</h3>
+        <p>₹15</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/jam.jpeg" alt="Jam+butter Maska bun">
+        <h3>Jam+Butter Maska bun</h3>
+        <p>₹15</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/chocolate.jpeg" alt="Chocolate bun">
+        <h3>Chocolate Bun</h3>
+        <p>₹15</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-section">
+    <h2 class="menu-title">Tej Signature Picks</h2>
+    <div class="snack-grid">
+      <div class="menu-card">
+        <img src="images/special 1.jpeg" alt="Tej Special Sandwich">
+        <h3>Tej Special Sandwich</h3>
+        <p>₹70</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/special 2.jpeg" alt="Signature Masala Fries">
+        <h3>Signature Masala Fries</h3>
+        <p>₹65</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+      <div class="menu-card">
+        <img src="images/special 3.jpeg" alt="Stuffed Paratha Combo">
+        <h3>Stuffed Paratha Combo</h3>
+        <p>₹80</p>
+        <a href="#order" class="btn">Order Now</a>
+      </div>
+    </div>
+  </section>
+
+   <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const buttons = document.querySelectorAll(".btn");
+      buttons.forEach(button => {
+        button.addEventListener("click", function (e) {
+          e.preventDefault();
+          const card = button.closest(".menu-card");
+          const name = card.querySelector("h3").textContent.trim();
+          const priceText = card.querySelector("p").textContent.trim();
+          const price = priceText.replace("₹", "").trim(); // Remove currency symbollocalStorage.setItem("currentOrder", JSON.stringify({ name, price }));
+      window.location.href = "order.html";
+    });
+  });
+});
+
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const buttons = document.querySelectorAll(".btn");
+      buttons.forEach(button => {
+        button.addEventListener("click", function (e) {
+          e.preventDefault();
+          const card = button.closest(".menu-card");
+          const name = card.querySelector("h3").textContent.trim();
+          const priceText = card.querySelector("p").textContent.trim();
+          const image = card.querySelector("img").src;
+          const price = parseInt(priceText.replace("₹", "").trim()) || 0;
+
+          const item = {
+            name: name,
+            price: price,
+            image: image
+          };
+
+          localStorage.setItem("selectedItem", JSON.stringify(item));
+          window.location.href = "order.html";
+        });
+      });
+    });
+  </script>
+
+  <div class="back-btn-wrapper">
+    <a href="index.html" class="back-btn">⬅ Back to Home</a>
+  </div>
+
+  <footer>
+    <p>Contact us: <a href="tel:+911234567890">+91 12345 67890</a></p>
+    <p>Order via WhatsApp: <a href="https://wa.me/911234567890" target="_blank">Click here</a></p>
+  </footer>
+</body>
+
+</html>
